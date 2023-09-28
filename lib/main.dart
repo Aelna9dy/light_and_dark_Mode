@@ -1,0 +1,27 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:revision/Theme_Provider/theme_provider.dart';
+import 'package:revision/Ui/home_page.dart';
+
+void main() {
+  runApp(ChangeNotifierProvider(
+    create: (context) => ThemeProvider(),
+    child: const MyApp(),
+  ));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: Provider.of<ThemeProvider>(context).themeData,
+      debugShowCheckedModeBanner: false,
+      initialRoute: HomePage.routeName,
+      routes: {
+        HomePage.routeName: (context) => HomePage(),
+      },
+    );
+  }
+}
